@@ -1,7 +1,7 @@
 Empirical Study of Network Flow Algorithms
 =====
 
-Authors: Megan Boggess, Jorda Hanna, James Marquardt
+Authors: Megan Boggess, Jordan Hanna, James Marquardt
 ------
 
 Ford Fulkerson
