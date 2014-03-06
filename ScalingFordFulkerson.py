@@ -16,6 +16,7 @@ class FlowNetwork(object):
     def __init__(self):
         self.adj = {}
         self.flow = {}
+        self.mincap = 0
  
     def add_vertex(self, vertex):
         self.adj[vertex] = []
@@ -34,6 +35,8 @@ class FlowNetwork(object):
         self.adj[v].append(redge)
         self.flow[edge] = 0
         self.flow[redge] = 0
+        if w > self.mincap:
+        	self.mincap = w
  
     def find_path(self, source, sink, path):
         if source == sink:
@@ -46,14 +49,18 @@ class FlowNetwork(object):
                     return result
  
     def max_flow(self, source, sink):
-        path = self.find_path(source, sink, [])
-        while path != None:
-            residuals = [edge.capacity - self.flow[edge] for edge in path]
-            flow = min(residuals)
-            for edge in path:
-                self.flow[edge] += flow
-                self.flow[edge.redge] -= flow
-            path = self.find_path(source, sink, [])
+        path = None
+        while path == None:
+        	self.mincap /= 2
+        	path = self.find_path(source, sink, [])
+        while path != None and self.mincap >= 1:
+			residuals = [edge.capacity - self.flow[edge] for edge in path]
+			if residuals >= self.mincap:
+				flow = min(residuals)
+				for edge in path:
+					self.flow[edge] += flow
+					self.flow[edge.redge] -= flow
+				path = self.find_path(source, sink, [])
         return sum(self.flow[edge] for edge in self.get_edges(source))
 
 #Main will read path to graph file from command line, and print max flow from FF and runtime.

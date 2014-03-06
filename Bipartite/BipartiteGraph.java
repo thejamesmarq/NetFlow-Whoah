@@ -56,8 +56,8 @@ public class BipartiteGraph
 				x=Math.random();
 				//Compute a capacity in range of [minCapacity, maxCapacity]
 				value = Math.floor(minCapacity + (x * (maxCapacity - minCapacity + 1)));
-				System.out.println("\t" + "s" + "\tl" + (i + 1) + "\t" + (int)value);
-				outFile.println("\t" + "s" + "\tl" + (i + 1) + "\t" + (int)value);
+				System.out.println("s" + " l" + (i + 1) + " " + (int)value);
+				outFile.println("s" + " l" + (i + 1) + " " + (int)value);
 			}
 			for(i=0; i<n; i++)
 			{
@@ -66,9 +66,9 @@ public class BipartiteGraph
 					if(edge[i][j] > 0)
 					{
 						edge[i][j] = Math.floor(minCapacity + (edge[i][j] * (maxCapacity - minCapacity + 1)));
-						System.out.println("\tl"+ (i+1) + "\tr" + (j+1) + "\t" + (int)edge[i][j]);
+						System.out.println("l"+ (i+1) + " r" + (j+1) + " " + (int)edge[i][j]);
 						//computing for the vertices between source and sink and writing them to the output file
-						outFile.println("\tl"+ (i+1) + "\tr" + (j+1) + "\t" + (int)edge[i][j]);
+						outFile.println("l"+ (i+1) + " r" + (j+1) + " " + (int)edge[i][j]);
 					}
 				}
 			}
@@ -77,8 +77,8 @@ public class BipartiteGraph
 			{
 				x=Math.random();
 				value = Math.floor(minCapacity + (x * (maxCapacity - minCapacity + 1)));
-				System.out.println("\tr" + (j+1) + "\t" + "t" + "\t" + (int)value);
-				outFile.println("\tr" + (j + 1) + "\t" + "t" + "\t" + (int)value);
+				System.out.println("r" + (j+1) + " " + "t" + " " + (int)value);
+				outFile.println("r" + (j + 1) + " " + "t" + " " + (int)value);
 			}
 
 			System.out.println("\n\nOutput is created at: \t" + directory + "\\" + fileName);
