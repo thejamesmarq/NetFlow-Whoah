@@ -1,4 +1,4 @@
-Network Flow Empirical Stufy
+Network Flow Empirical Study
 =========
 Authors: Megan Boggess, Jordan Hanna, James Marquardt
 ---------
