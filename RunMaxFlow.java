@@ -35,20 +35,25 @@ public class RunMaxFlow {
 	}
 	int sum = 0;
 	
+	long fordfulkerson_runtime, fordfulkeronsscaling_runtime, preflow_runtime = 0;
+
 	FordFulkerson f = new FordFulkerson();
 	long start_time = System.nanoTime();
 	FlowNetwork ff_max_flow = f.maxFlow(g,"s","t");
-	System.out.println((System.nanoTime() - start_time)/ 1000000000.0);
+	fordfulkerson_runtime = (System.nanoTime() - start_time)/ 1000000000.0
+	//System.out.println(fordfulkerson_runtime);
 
 	FordFulkersonScaling sf = new FordFulkersonScaling();
 	start_time = System.nanoTime();
 	FlowNetwork sff_max_flow = sf.maxFlow(g,"s","t");
-	System.out.println((System.nanoTime() - start_time)/ 1000000000.0);
+	fordfulkeronsscaling_runtime = (System.nanoTime() - start_time)/ 1000000000.0);
+	//System.out.println(fordfulkeronsscaling_runtime);
 
 	PreflowPush pfp = new PreflowPush(sg, vertices.get("s"), vertices.get("t"));
 	pfp.initialize();
 	start_time = System.nanoTime();
 	int flow = pfp.computeMaxFlow();
-	System.out.println((System.nanoTime() - start_time)/ 1000000000.0);
+	preflow_runtime = (System.nanoTime() - start_time)/ 1000000000.0
+	//System.out.println(preflow_runtime);
 	}
 }
